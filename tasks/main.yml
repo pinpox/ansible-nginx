@@ -6,6 +6,12 @@
       - nginx
     state: latest
 
+- name: Copy main nginx config
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: '0644'
+
 - name: Enable nginx on startup
   systemd:
     name: nginx
