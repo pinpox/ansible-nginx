@@ -1,2 +1,18 @@
 ---
 # tasks file for ansible-nginx
+- name: Install necessary packages
+  pacman:
+    name:
+      - nginx
+    state: latest
+
+- name: Enable nginx on startup
+  systemd:
+    name: nginx
+    enabled: yes
+    masked: no
+
+- name: Start nginx
+  systemd:
+    state: started
+    name: nginx
